@@ -1,0 +1,12 @@
+{
+    "name": "human-ook/kicadmod2svg",
+    "version": "1.0.0",
+    "require": {
+        "meyfa/php-svg": "^0.11.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hk\\KicadmodParser\\": "KicadmodParser/"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+.idea/*
+test/*
+img/*
+js/*
+css/*
+vendor/*
+favicon.ico
+index.html
+composer.phar
