@@ -50,7 +50,7 @@ abstract class Attribute
      */
     public function getAttributes($name = '')
     {
-        $factory = AttributesRegistory::getInstance();
+        $factory = AttributesRegistry::getInstance();
         $values = [];
         if( is_array($this->parameters) === TRUE )
         {

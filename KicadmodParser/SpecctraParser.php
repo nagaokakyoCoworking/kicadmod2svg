@@ -1,25 +1,31 @@
 <?php
 namespace Hk\KicadmodParser;
-
+/**
+ * SPECCTRA DSN file format Parser
+ *
+ * @see https://en.wikipedia.org/wiki/Specctra
+ * @see https://cdn.hackaday.io/files/1666717130852064/specctra.pdf
+ * @see https://dev-docs.kicad.org/en/file-formats/sexpr-intro/index.html#_footprint
+ */
 class SpecctraParser
 {
     /**
+     * ( )
      *
-     *
-     * @param string $data
+     * @param string $textData
      * @return array
      */
-    public static function parseAttrbiuteArray($data)
+    public static function parseTokens(string $textData): array
     {
         $cols = [];
         $isBranch = FALSE;
         $branchDepth = 0;
         $doubleQuote = FALSE;
         $value = '';
-        $len = mb_strlen($data);
+        $len = mb_strlen($textData);
         for($i = 0 ; $i < $len ; $i++)
         {
-            $needle = mb_substr($data,$i,1);
+            $needle = mb_substr($textData,$i,1);
             if( $needle != ' ' || $isBranch === TRUE || $doubleQuote == TRUE )
             {
                 $value .= $needle;
@@ -73,7 +79,7 @@ class SpecctraParser
      * @param string $content
      * @return string
      */
-    public static function parseAttributeValue($content)
+    public static function parseAttributeValue($content):string
     {
         if( preg_match('/^\(([\s\S"]*)\)$/',$content,$matches) === 1 )
         {

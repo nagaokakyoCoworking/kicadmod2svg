@@ -1,14 +1,12 @@
 <?php
 namespace Hk\KicadmodParser\Attributes;
 
-
-
 use Hk\KicadmodParser\SpecctraParser;
 
-class AttributesRegistory
+class AttributesRegistry
 {
     /**
-     * @var AttributesRegistory
+     * @var AttributesRegistry
      */
     private static $singleton;
 
@@ -18,21 +16,19 @@ class AttributesRegistory
     private $registories = [];
 
     /**
-     * @return AttributesRegistory
+     * @return AttributesRegistry
      */
-    public static function getInstance()
+    public static function getInstance(): AttributesRegistry
     {
         if( isset(self::$singleton) === FALSE )
         {
-            self::$singleton = new AttributesRegistory();
+            self::$singleton = new AttributesRegistry();
         }
         return self::$singleton;
     }
 
-
     /**
      * コンストラクタ
-     *
      */
     public function __construct()
     {
@@ -78,10 +74,10 @@ class AttributesRegistory
      * @param string $data
      * @return Attribute|null
      */
-    public function getAttributes($data)
+    private function getAttributes($data)
     {
         $attribute = NULL;
-        $cols = SpecctraParser::parseAttrbiuteArray($data);
+        $cols = SpecctraParser::parseTokens($data);
         if( is_array($cols) === TRUE && count($cols) > 0 )
         {
             $nodeName = $cols[0];

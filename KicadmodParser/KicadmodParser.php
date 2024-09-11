@@ -1,7 +1,7 @@
 <?php
 namespace Hk\KicadmodParser;
 
-use Hk\KicadmodParser\Attributes\AttributesRegistory;
+use Hk\KicadmodParser\Attributes\AttributesRegistry;
 use Hk\KicadmodParser\Attributes\Items\DescriptionAttribute;
 use Hk\KicadmodParser\Attributes\Items\Fp\FpLineAttribute;
 use Hk\KicadmodParser\Geometry\BoundingBox;
@@ -87,7 +87,7 @@ class KicadmodParser
      */
     public function parseContent(string $content):string
     {
-        $factory = AttributesRegistory::getInstance();
+        $factory = AttributesRegistry::getInstance();
         $svgFactory = new SVGNodeFactory();
         $data = $factory->parse($content);
         $layers = [];
